@@ -42,3 +42,4 @@ imports/lib/
 ehthumbs.db
 Thumbs.db
 /.metadata/
+.recommenders
