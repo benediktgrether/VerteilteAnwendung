@@ -5,11 +5,11 @@ public class EggThread extends Thread
 	public String output;
 
 	public void start() {
-		schlafen(ms);
-		System.out.println(output);
+		sleep(ms);
+		System.out.println(ms + " " + output);
 	}
 	
-	public static void schlafen(int m) {
+	public static void sleep(int m) {
 		try {
 			Thread.sleep(1000 * m);
 		} catch (InterruptedException t) {
