@@ -11,23 +11,46 @@ public class TimeService
 {
     public static void main(String[] args) throws IOException
     {
-        // System.out.println("Test");
         while(true)
         {
             ServerSocket serverSocket = new ServerSocket(7500);
             Socket socket = serverSocket.accept();
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+            writer.write("time service");
+            writer.newLine();
+            writer.flush();
             while(true)
             {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                // System.out.println(bufferedReader.readLine());
-                String input  = reader.readLine();
-                
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                // System.out.println(Clock.date());
-            }
+                String inputTerminal  = reader.readLine();
 
-            // System.out.println(Clock.date());
-            // System.out.println(Clock.time());
+
+                if(inputTerminal == null)
+                {
+                    socket.close();
+                }
+                else
+                {
+                    switch(inputTerminal)
+                    {
+                        case "date":
+                        writer.write(Clock.date());
+                        writer.newLine();
+                        writer.flush();
+                        break;
+
+                        case "time":
+                        writer.write(Clock.time());
+                        writer.newLine();
+                        writer.flush();
+                        break;
+
+                        default:
+                        writer.write("end");
+                        socket.close();
+                    }
+                }
+            }
         }
     }
 }
