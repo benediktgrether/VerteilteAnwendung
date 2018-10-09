@@ -1,7 +1,6 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import sun.java2d.pipe.SpanShapeRenderer.Simple;
 
 public class Clock
 {
