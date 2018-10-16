@@ -57,8 +57,8 @@ public class TimeService
                                 serverSocket.close();
                             }
                         }    
-                    reader.close(); 
-                    writer.close();
+                    // reader.close(); 
+                    // writer.close();
                     serverSocket.close();
                     }
                 }
