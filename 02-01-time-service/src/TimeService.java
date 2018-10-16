@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.OutputStream;
+// import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.InputStreamReader;
 // import java.io.IOException;
@@ -57,7 +57,9 @@ public class TimeService
                                 serverSocket.close();
                             }
                         }    
-                    // serverSocket.close();
+                    reader.close(); 
+                    writer.close();
+                    serverSocket.close();
                     }
                 }
                 catch(Exception e)

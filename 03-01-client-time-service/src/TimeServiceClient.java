@@ -24,13 +24,15 @@ public class TimeServiceClient
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			inbox = reader.readLine();
-			System.out.print(inbox);
+			System.out.println(inbox);
 			writer.write("date");
 			writer.newLine();
 			writer.flush();
 			inbox = reader.readLine();
             System.out.println(inbox);
-            socket.close();
+			reader.close(); 
+			writer.close();
+			socket.close();
 		}
 		catch (IOException e) 
 		{
@@ -42,19 +44,20 @@ public class TimeServiceClient
 	public static String timeFromServer(String ip)
 	{
 		String inbox = null;
-		System.out.println("Test");
 		try
 		{
 			Socket socket = new Socket(ip, 7500);
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			inbox = reader.readLine();
-			System.out.print(inbox);
+			System.out.println(inbox);
 			writer.write("time");
 			writer.newLine();
 			writer.flush();
 			inbox = reader.readLine();
-            System.out.println(inbox);
+			System.out.println(inbox);
+			reader.close(); 
+			writer.close();
             socket.close();
 		}
 		catch (IOException e) 
