@@ -1,7 +1,6 @@
 public class EggClock {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		eggclock(4, "running");
 		eggclock(3, "running");
 		eggclock(2, "running");
