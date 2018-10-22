@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 // import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.InputStreamReader;
@@ -9,68 +10,32 @@ import java.net.Socket;
 
 public class TimeService
 {
+    // ServerSocket serverSocket;
+
     public static void main(String[] args)
     {
-        try{
+        TimeServiceStart();
+    }
+
+    public static void TimeServiceStart()
+    {
+        try {
+            ServerSocket serverSocket = new ServerSocket(7500);
             while(true)
-            {
-                ServerSocket serverSocket = new ServerSocket(7500);
+            try{
+
                 Socket socket = serverSocket.accept();
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                writer.write("time service");
-                writer.newLine();
-                writer.flush();
-                try{
-                    while(true)
-                    {
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                        String inputTerminal  = reader.readLine();
-
-
-                        if(inputTerminal == null)
-                        {
-                            reader.close(); 
-                            writer.close();
-                            socket.close();
-                        }
-                        else
-                        {
-                            switch(inputTerminal)
-                            {
-                                case "date":
-                                writer.write(Clock.date());
-                                writer.newLine();
-                                writer.flush();
-                                break;
-
-                                case "time":
-                                writer.write(Clock.time());
-                                writer.newLine();
-                                writer.flush();
-                                break;
-
-                                default:
-                                writer.write("end");
-                                writer.newLine();
-                                writer.flush();                           
-                                socket.close();
-                                serverSocket.close();
-                            }
-                        }    
-                    // reader.close(); 
-                    // writer.close();
-                    serverSocket.close();
-                    }
-                }
-                catch(Exception e)
+                if (socket != null)
                 {
-                    System.out.println("Error Inner Loop");
+                    TimeServiceMultithreaded timeServiceMulti = new TimeServiceMultithreaded(socket);
+                    timeServiceMulti.start();
                 }
+            }catch(IOException e)
+            {
+                e.printStackTrace();
             }
-        }
-        catch(Exception e)
-        {
-            System.out.println("Error Outer Loop");
-        }
+        } catch (IOException e) {
+            e.printStackTrace();
+		}
     }
 }

@@ -32,7 +32,7 @@ public class TimeServiceClient
             System.out.println(inbox);
 			reader.close(); 
 			writer.close();
-			socket.close();
+			//socket.close();
 		}
 		catch (IOException e) 
 		{
