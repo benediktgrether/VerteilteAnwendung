@@ -39,8 +39,6 @@ public class httpsClient
 
             if(socket.isConnected() == true)
             {
-                System.out.println("Test");
-                // writer.write("Test");
                 writer.write("GET" + u.getFile());
                 writer.newLine();
                 writer.write("Host : " + u.getHost());
