@@ -50,17 +50,17 @@ public class httpsClients
                 writer.newLine();
                 writer.flush();
                 String answer = reader.readLine();
-                while(answer.equals("HTTP/1.1 200 OK"))
+                if(answer.equals("HTTP/1.1 200 OK"))
                 {
                     // bool = true; 
                     urlExist(url);
+                    System.out.println("URL Exits");
 
                 }
-                // while(answer != null)
-                // {
-                //     System.out.println(answer);
-                //     answer = reader.readLine();
-                // }
+                while(answer != null)
+                {
+                    System.out.println(body(answer = reader.readLine()));
+                }
             }
         }
         catch(Exception e)
@@ -71,7 +71,13 @@ public class httpsClients
 
     public static boolean urlExist(String s)
     {
-        
+        System.out.println("URL Exits");
         return true;
     }
+
+    public static String body(String answer)
+    {
+        return answer;
+    }
+
 }
