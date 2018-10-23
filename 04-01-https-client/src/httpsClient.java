@@ -33,18 +33,25 @@ public class httpsClient
             // Socket socket = new Socket(u.getHost(), Port);
             SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
             SSLSocket socket = (SSLSocket) factory.createSocket(u.getHost(), Port);
+
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             if(socket.isConnected() == true)
             {
-                writer.writer("GET" + u.getFile());
+                System.out.println("Test");
+                // writer.write("Test");
+                writer.write("GET" + u.getFile());
                 writer.newLine();
-                writer.writer("Host : " + u.getHost());
+                writer.write("Host : " + u.getHost());
                 writer.newLine();
-                // ˜writer.flush();
-                writer.writer();
+                writer.write("");
                 writer.flush();
+
+                while(reader.readLine() != null)
+                {
+                    System.out.println(reader.readLine());
+                }
             }
 
 
