@@ -25,40 +25,36 @@ public class httpsClients
         {
             URL u = new URL(url);
             u.getHost();
-            int Port = u.getPort();
+            int port = u.getPort();
             u.getFile();
             
             if (u.getPort() == -1 )
             {
-                Port = 443;
+                port = 443;
             }
             // Socket socket = new Socket(u.getHost(), Port);
             SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-            SSLSocket socket = (SSLSocket) factory.createSocket(u.getHost(), Port);
+            SSLSocket socket = (SSLSocket) factory.createSocket(u.getHost(), port);
 
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             if(socket.isConnected() == true)
             {
-                writer.write("GET + " + u.getFile());
+                writer.write("GET " + u.getFile() + " HTTP/1.1");
                 writer.newLine();
-                writer.flush();
-                writer.write("Host : " + u.getHost());
+                writer.write("Host: " + u.getHost());
                 writer.newLine();
-                writer.flush();
                 writer.write("");
+                writer.newLine();
                 writer.flush();
                 String answer = reader.readLine();
                 while(answer != null)
                 {
-                    System.out.println(reader.readLine());
+                    System.out.println(answer);
                     answer = reader.readLine();
                 }
             }
-
-
-            System.out.println(u.getHost() + " " + Port + " " + u.getFile());
         }
         catch(Exception e)
         {
