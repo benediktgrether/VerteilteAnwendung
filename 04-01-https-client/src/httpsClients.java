@@ -9,13 +9,15 @@ import java.net.URL;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
-import com.sun.tools.internal.ws.processor.model.Port;
+// import com.sun.tools.internal.ws.processor.model.Port;
 
-public class httpsClient
+public class httpsClients
 {
     public static void main(String[] args)
     {
         get("https://www.bundestag.de/presse");
+        // get("https://www.benediktgrether.de");
+        // get("https://www.youtube.com");
     }
     public static void get(String url)
     {
@@ -39,16 +41,19 @@ public class httpsClient
 
             if(socket.isConnected() == true)
             {
-                writer.write("GET" + u.getFile());
+                writer.write("GET + " + u.getFile());
                 writer.newLine();
+                writer.flush();
                 writer.write("Host : " + u.getHost());
                 writer.newLine();
+                writer.flush();
                 writer.write("");
                 writer.flush();
-
-                while(reader.readLine() != null)
+                String answer = reader.readLine();
+                while(answer != null)
                 {
                     System.out.println(reader.readLine());
+                    answer = reader.readLine();
                 }
             }
 
