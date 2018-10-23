@@ -57,6 +57,10 @@ public class httpsClients
                     System.out.println("URL Exits");
 
                 }
+                else
+                {
+                    socket.close();
+                }
                 while(answer != null)
                 {
                     System.out.println(body(answer = reader.readLine()));
