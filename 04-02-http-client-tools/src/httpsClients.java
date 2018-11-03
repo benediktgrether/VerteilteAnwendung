@@ -41,7 +41,7 @@ public class httpsClients
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             if(socket.isConnected() == true)
-            {
+           { 
                 writer.write("GET " + u.getFile() + " HTTP/1.1");
                 writer.newLine();
                 writer.write("Host: " + u.getHost());
@@ -54,7 +54,6 @@ public class httpsClients
                 {
                     // bool = true; 
                     urlExist(url);
-                    System.out.println("URL Exits");
 
                 }
                 else
