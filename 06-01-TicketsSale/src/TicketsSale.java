@@ -29,33 +29,43 @@ public class TicketsSale {
 	{
 		while(runTime = true)
 		{
-			System.out.println("Overview O,");
-			System.out.print("Your input >");
-			Scanner sc = new Scanner(System.in);
-			String input = sc.nextLine();
-			sc.close();
+			//consoleInput();
 
-			switch(input.toLowerCase())
+			switch(consoleInput())
 			{
 				case "overview": case "o":
 					System.out.println("Test");
-					//System.out.print(tickets.overviewTickets());
+					tickets.overviewTickets();
 					break;
 			}
 
 			//System.out.println(tickets.overviewTickets(1));
 		}
 	}
-
-
-	public TicketStatus overviewTickets()
+	
+	private String consoleInput()
 	{
+		System.out.println("Overview O,");
+		System.out.print("Your input >");
+		Scanner sc = new Scanner(System.in);
+		String input = sc.nextLine();
+		return input.toLowerCase();
+	}
+
+
+	public void overviewTickets()
+	{
+		int counter = 0;
 		for (int i = 0; i < ticketarray.length; i++) {
-			return ticket.status;	
-		}
-		return ticket.status;
-		
-		
+			Ticket tickets = ticketarray[i];
+			System.out.print(tickets.nummer + " " + tickets.status + " | " );					
+			counter ++;
+			if(counter == 10)
+			{
+				System.out.println();
+				counter = 0;
+			}
+		}		
 	}
 	
 	public void sellFreeTickets()
