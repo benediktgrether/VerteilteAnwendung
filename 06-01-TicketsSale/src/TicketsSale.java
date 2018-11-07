@@ -69,6 +69,7 @@ public class TicketsSale {
 	private String consoleInput()
 	{
 		System.out.print("Your input > ");
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		String input = sc.nextLine();
 		return input;
