@@ -13,6 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/HtmlTicketsSale")
 public class HtmlTicketsSale extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	public void service (HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		try {
+			TicketSaleListener model = new TicketSaleListener();
 
 
+		}catch(Exception e){
+			request.getRequestDispatcher("/Fehler.html").forward(request, response);
+		}
+	}
 }
