@@ -228,7 +228,6 @@ public class TicketsSale {
 			{
 				if(ticketarray[i].status.equals(TicketStatus.RESERVED))
 				{
-					//open = false;
 					ticketarray[i].status = TicketStatus.FREE;
 				}
 			}
