@@ -131,11 +131,10 @@ public class TicketsSale {
 	}
 	
 	
-	public TicketStatus reservTickets(String seatNumber)
+	public TicketStatus reservTickets(String seatNumber, String lastNameInput)
 	{
 		int value = inputValue(seatNumber);
-		System.out.print("Your Name: ");
-		String lastName = consoleInput();
+		String lastName = lastNameInput;
 		try 
 		{
 			if(ticketarray[value-1].status.equals(TicketStatus.FREE) && open == true)
@@ -166,11 +165,11 @@ public class TicketsSale {
 		return null;
 	}
 	
-	public TicketStatus buyReservTickets(String seatNumber)
+	public synchronized TicketStatus buyReservTickets(String seatNumber, String lastNameInput)
 	{
 		int value = inputValue(seatNumber);
-		System.out.print("Your Name: ");
-		String lastName = consoleInput();
+		//System.out.print("Your Name: ");
+		String lastName = lastNameInput;
 		try 
 		{
 			if((ticketarray[value-1].status.equals(TicketStatus.RESERVED) 
@@ -196,12 +195,13 @@ public class TicketsSale {
 		return null;
 	}
 	
-	public TicketStatus cancelTickets(String seatNumber)
+	public TicketStatus cancelTickets(String seatNumber, String lastNameInput)
 	{
 		int value = inputValue(seatNumber);
+		String lastName = lastNameInput;
 		try 
 		{
-			if(ticketarray[value-1].status.equals(TicketStatus.SOLD) || ticketarray[value-1].status.equals(TicketStatus.RESERVED))
+			if(ticketarray[value-1].status.equals(TicketStatus.SOLD) && (ticketarray[value-1].lastName.equals(lastName)) || ticketarray[value-1].status.equals(TicketStatus.RESERVED) && (ticketarray[value-1].lastName.equals(lastName)))
 			{
 				System.out.println("You canceld your Seat");
 				ticketarray[value - 1 ].lastName = null;
