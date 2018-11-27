@@ -12,5 +12,17 @@ public class Ticket {
 		this.status = TicketStatus.FREE;
 		
 	}
+
+	public Object toHTML() {
+		
+		StringBuffer sb = new StringBuffer();
+		sb.append("<div");
+		sb.append(" class='");
+		sb.append(status.getCssClass());
+		sb.append("'>");
+		sb.append(nummer);
+		sb.append("</div>");
+		return sb.toString();
+	}
 	
 }

@@ -1,6 +1,8 @@
 //import java.util.Vector;
 import java.util.Scanner;
 
+import exception.TicketSaleException;
+
 
 /*public class TicketsSale<Ticket> {
 
@@ -9,7 +11,7 @@ import java.util.Scanner;
 
 public class TicketsSale {
 
-	private Ticket []ticketarray = new Ticket[10];
+	private Ticket []ticketarray = new Ticket[100];
 	private static boolean runTime = true;
 	private boolean open = true;
 
@@ -22,9 +24,11 @@ public class TicketsSale {
 	
 	public static void main(String[] args) {
 		TicketsSale tickets = new TicketsSale();
-		tickets.runTimeTicket(tickets);
+		//tickets.buyFreeTickets(seatNumber);
+		//tickets.runTimeTicket(tickets);
 	}
 	
+	/*
 	public void runTimeTicket(TicketsSale tickets)
 	{
 		while(runTime == true)
@@ -66,6 +70,7 @@ public class TicketsSale {
 		}
 	}
 	
+	*/
 	private String consoleInput()
 	{
 		System.out.print("Your input > ");
@@ -104,33 +109,37 @@ public class TicketsSale {
 		}		
 	}
 	
-	public TicketStatus buyFreeTickets(String seatNumber)
+	public synchronized void buyFreeTickets(String seatNumber)
 	{
-			int value = inputValue(seatNumber);
+			int value = Integer.parseInt(seatNumber);
 			try {
 				if(ticketarray[value - 1].status.equals(TicketStatus.FREE) && open == true)
 				{
 					System.out.println("Your Seat is booked");
 					System.out.println();
-					return ticketarray[value - 1].status = TicketStatus.SOLD;
+					ticketarray[value - 1].status = TicketStatus.SOLD;
 				}
 				else if(open == false)
 				{
-					System.out.println("Reservation closed");
+					throw new TicketSaleException("Reservation closed");
 				}else {
-					System.out.println("Seat not free");
-					System.out.println();
+					throw new TicketSaleException("Seat not free");
+					
 				}
 			}
-			catch(Exception E)
+			catch(Exception e)
 			{
-				System.out.println("Array out of index");
-				System.out.println();
+				throw new TicketSaleException(e);
 			}
-		return null;
+		
 	}
 	
 	
+	private int parseInt(String seatNumber) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	public TicketStatus reservTickets(String seatNumber, String lastNameInput)
 	{
 		int value = inputValue(seatNumber);
@@ -239,6 +248,33 @@ public class TicketsSale {
 		}
 		return open = false;
 	}
+	
+		public String toHTML() {
+			
+			StringBuffer sb = new StringBuffer();
+			
+			sb.append("<table>");
+			sb.append("<tbody> <tr>");
+			int i = 1;
+			for(Ticket ticket : ticketarray) {
+				sb.append("<td>");
+				sb.append(ticket.toHTML());
+				sb.append("<td>");
+				if (i%10 == 0) {
+					sb.append("</tr>");
+					sb.append("<tr>");
+				}
+				i++;
+				
+			}
+			sb.append("</tr>");
+			sb.append("</tbody>");
+			sb.append("</table>");
+			
+			return sb.toString();
+			
+			
+		}
 	
 
 }
