@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,20 +10,17 @@ import exception.TicketSaleException;
 /**
  * Servlet implementation class HtmlTicketsSale
  */
-@WebServlet("/HtmlTicketsSale")
-public class HtmlTicketsSale extends HttpServlet {
+@WebServlet("/reservTickets")
+public class reservTicketsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public void service (HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		// int seatNumber = Integer.parseInt(request.getParameter("nummer"));
-		
 		try {
-			
 			TicketsSale ts = (TicketsSale) getServletContext().getAttribute("ts");
 			String seatNumber = request.getParameter("nummer");
 			System.out.println(seatNumber);
 			String lastName = request.getParameter("name");
 			
-			ts.buyFreeTickets(seatNumber);
+			ts.reservTickets(seatNumber, lastName);
 			
 			request.getRequestDispatcher("/Operation_erfolgreich_ausgefuehrt.html").forward(request, response);
 			

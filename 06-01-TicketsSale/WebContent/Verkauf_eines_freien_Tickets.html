@@ -1,16 +1,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
  </head><body>
-  
-   
-   
-  
-  
+
   <h2>Verkauf eines freien Tickets</h2> 
-  <form method="get" action="">
-    Sitzplatznummer 
-   <input name="nummer"/> 
-   <p> <input value="ausfhren" type="submit"/>    </p>
+  <form method="get" action="buyFreeTickets">
+    <table style="text-align: left;">
+      <tbody>
+        <tr>
+          <td style="text-align: left;">Sitzplatznummer</td>
+          <td> <input name="nummer" type="text"/> </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">Reservierungsname</td>
+          <td> <input name="name" type="text"/> </td>
+        </tr>
+      </tbody>
+    </table>
+    <p> <input value="ausführen" type="submit" /> </p>
   </form>
  
 </body></html>

@@ -22,11 +22,11 @@ public class TicketsSale {
 		}
 	}
 	
-	public static void main(String[] args) {
-		TicketsSale tickets = new TicketsSale();
-		//tickets.buyFreeTickets(seatNumber);
-		//tickets.runTimeTicket(tickets);
-	}
+	// public static void main(String[] args) {
+	// 	TicketsSale tickets = new TicketsSale();
+	// 	//tickets.buyFreeTickets(seatNumber);
+	// 	//tickets.runTimeTicket(tickets);
+	// }
 	
 	/*
 	public void runTimeTicket(TicketsSale tickets)
@@ -71,28 +71,28 @@ public class TicketsSale {
 	}
 	
 	*/
-	private String consoleInput()
-	{
-		System.out.print("Your input > ");
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
-		String input = sc.nextLine();
-		return input;
-	}
+	// private String consoleInput()
+	// {
+	// 	System.out.print("Your input > ");
+	// 	@SuppressWarnings("resource")
+	// 	Scanner sc = new Scanner(System.in);
+	// 	String input = sc.nextLine();
+	// 	return input;
+	// }
 
-	private int inputValue(String seatNumber) {
-		try {
-			int value = Integer.parseInt(seatNumber);
-			return value;
-		}
-		catch(Exception E)
-		{
-			System.out.println("Wrong Input");
-			System.out.println();
-		}
+	// private int inputValue(String seatNumber) {
+	// 	try {
+	// 		int value = Integer.parseInt(seatNumber);
+	// 		return value;
+	// 	}
+	// 	catch(Exception E)
+	// 	{
+	// 		System.out.println("Wrong Input");
+	// 		System.out.println();
+	// 	}
 		
-		return -1;
-	}
+	// 	return -1;
+	// }
 
 	public void overviewTickets()
 	{
@@ -109,22 +109,28 @@ public class TicketsSale {
 		}		
 	}
 	
-	public synchronized void buyFreeTickets(String seatNumber)
+	public synchronized void buyFreeTickets(String seatNumber, String lastNameInput)
 	{
-			int value = Integer.parseInt(seatNumber);
+		int value = Integer.parseInt(seatNumber);
+		System.out.println(ticketarray[value - 1].lastName);
+		String lastName = lastNameInput.toLowerCase();
 			try {
-				if(ticketarray[value - 1].status.equals(TicketStatus.FREE) && open == true)
+				if(ticketarray[value - 1].status.equals(TicketStatus.FREE) || ticketarray[value - 1].lastName.equals(null) && open == true)
 				{
 					System.out.println("Your Seat is booked");
 					System.out.println();
 					ticketarray[value - 1].status = TicketStatus.SOLD;
+					ticketarray[value - 1].lastName = lastName;
 				}
-				else if(open == false)
-				{
-					throw new TicketSaleException("Reservation closed");
-				}else {
+				else {
+					System.out.println("Seat not free");
 					throw new TicketSaleException("Seat not free");
 					
+				}
+				if(open == false)
+				{
+					System.out.println("Reservation closed");
+					throw new TicketSaleException("Reservation closed");
 				}
 			}
 			catch(Exception e)
@@ -135,102 +141,119 @@ public class TicketsSale {
 	}
 	
 	
-	private int parseInt(String seatNumber) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public TicketStatus reservTickets(String seatNumber, String lastNameInput)
+	public synchronized void reservTickets(String seatNumber, String lastNameInput)
 	{
-		int value = inputValue(seatNumber);
-		String lastName = lastNameInput;
+		int value = Integer.parseInt(seatNumber);
+		String lastName = lastNameInput.toLowerCase();
 		try 
 		{
-			if(ticketarray[value-1].status.equals(TicketStatus.FREE) && open == true)
+			if(lastName != "" && value == (int)value)
 			{
-				System.out.println("Your Seat is reserved");
-				ticketarray[value - 1].status = TicketStatus.RESERVED;
-				ticketarray[value - 1].lastName = lastName;
-				return ticketarray[value - 1].status;
+				if(ticketarray[value-1].status.equals(TicketStatus.FREE) && open == true)
+				{
+					System.out.println("Your Seat is reserved");
+					ticketarray[value - 1].status = TicketStatus.RESERVED;
+					ticketarray[value - 1].lastName = lastName;
+				}
+				else if(ticketarray[value-1].status.equals(TicketStatus.SOLD))
+				{
+					System.out.println("Seat already sold");
+					throw new TicketSaleException("Seat already sold");
+				}
+				
+				else if(ticketarray[value-1].status.equals(TicketStatus.RESERVED))
+				{
+					System.out.println("Seat already Reserved");
+					throw new TicketSaleException("Seat already Reserved");
+				}
+				else if(open == false)
+				{
+					System.out.println("Reservation closed");
+					throw new TicketSaleException("Reservation closed");
+				}
 			}
-			else if(ticketarray[value-1].status.equals(TicketStatus.SOLD))
-			{
-				System.out.println("Seat already sold");
+			else{
+				System.out.println("Please Insert your Last Name");
+				throw new TicketSaleException("Please Insert your Last Name");
 			}
-			else if(open == false)
+		}
+		catch(Exception e)
+		{
+			throw new TicketSaleException(e);
+		}
+	}
+	
+	public synchronized void buyReservTickets(String seatNumber, String lastNameInput)
+	{
+		int value = Integer.parseInt(seatNumber);
+		String lastName = lastNameInput.toLowerCase();
+		try 
+		{
+			if(lastName != "" && value == (int)value)
 			{
-				System.out.println("Reservation closed");
+				if((ticketarray[value-1].status.equals(TicketStatus.RESERVED) 
+						&& open == true) && (ticketarray[value-1].lastName.equals(lastName)))
+				{
+					System.out.println("You bought your Seat");
+					ticketarray[value - 1].status = TicketStatus.SOLD;
+				}
+				else if(ticketarray[value-1].status.equals(TicketStatus.FREE))
+				{
+					System.out.println("Seat is Free");
+					throw new TicketSaleException("Seat is Free");
+				}
+				else
+				{
+					System.out.println("Seat already sold");
+					throw new TicketSaleException("Seat already sold");
+				}
+			}
+			else{
+				System.out.println("Please Insert your Last Name");
+				throw new TicketSaleException("Please Insert your Last Name");
+			}
+		}
+		catch(Exception e)
+		{
+			throw new TicketSaleException(e);
+		}
+	}
+	
+	public synchronized void cancelTickets(String seatNumber, String lastNameInput)
+	{
+		int value = Integer.parseInt(seatNumber);
+		String lastName = lastNameInput.toLowerCase();
+		try 
+		{
+			if(lastName != "" && value == (int)value)
+			{
+				if(ticketarray[value-1].status.equals(TicketStatus.SOLD) && (ticketarray[value-1].lastName.equals(lastName)) || ticketarray[value-1].status.equals(TicketStatus.RESERVED) && (ticketarray[value-1].lastName.equals(lastName)))
+				{
+					System.out.println("You canceld your Seat");
+					ticketarray[value - 1 ].lastName = "";
+					ticketarray[value - 1].status = TicketStatus.FREE;
+				}
+				else
+				{
+					System.out.println("Seat is already free");
+					throw new TicketSaleException("Seat is already free");
+				}
 			}
 			else
 			{
-				System.out.println("Seat already reserved");
+				System.out.println("Please Insert your Last Name");
+				throw new TicketSaleException("Please Insert your Last Name");
 			}
 		}
-		catch(Exception E)
+		catch(Exception e)
 		{
-			System.out.println("Array out of index");
-			System.out.println();
+			throw new TicketSaleException(e);
 		}
-		return null;
 	}
 	
-	public synchronized TicketStatus buyReservTickets(String seatNumber, String lastNameInput)
+	public synchronized void clearReservation()
 	{
-		int value = inputValue(seatNumber);
-		//System.out.print("Your Name: ");
-		String lastName = lastNameInput;
-		try 
-		{
-			if((ticketarray[value-1].status.equals(TicketStatus.RESERVED) 
-					&& open == true) && (ticketarray[value-1].lastName.equals(lastName)))
-			{
-				System.out.println("You bought your Seat");
-				return ticketarray[value - 1].status = TicketStatus.SOLD;
-			}
-			else if(ticketarray[value-1].status.equals(TicketStatus.FREE))
-			{
-				System.out.println("Seat is Free");
-			}
-			else
-			{
-				System.out.println("Seat already sold");
-			}
-		}
-		catch(Exception E)
-		{
-			System.out.println("Array out of index");
-			System.out.println();
-		}
-		return null;
-	}
-	
-	public TicketStatus cancelTickets(String seatNumber, String lastNameInput)
-	{
-		int value = inputValue(seatNumber);
-		String lastName = lastNameInput;
-		try 
-		{
-			if(ticketarray[value-1].status.equals(TicketStatus.SOLD) && (ticketarray[value-1].lastName.equals(lastName)) || ticketarray[value-1].status.equals(TicketStatus.RESERVED) && (ticketarray[value-1].lastName.equals(lastName)))
-			{
-				System.out.println("You canceld your Seat");
-				ticketarray[value - 1 ].lastName = null;
-				return ticketarray[value - 1].status = TicketStatus.FREE;
-			}
-			else
-			{
-				System.out.println("Seat is already free");
-			}
-		}
-		catch(Exception E)
-		{
-			System.out.println("Array out of index");
-			System.out.println();
-		}
-		return null;
-	}
-	
-	public boolean clearReservation()
-	{
+		System.out.println("test");
 		for(int i = 0; i < ticketarray.length; i++)
 		{
 		try 
@@ -240,13 +263,14 @@ public class TicketsSale {
 					ticketarray[i].status = TicketStatus.FREE;
 				}
 			}
-			catch(Exception E)
+			catch(Exception e)
 			{
 				System.out.println("Array out of index");
 				System.out.println();
+				throw new TicketSaleException(e);
 			}
 		}
-		return open = false;
+		open = false;
 	}
 	
 		public String toHTML() {
