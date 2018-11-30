@@ -17,9 +17,9 @@ public class Ticket {
 		
 		StringBuffer sb = new StringBuffer();
 		sb.append("<div");
-		sb.append(" class='");
+		sb.append(" class='seat "  );
 		sb.append(status.getCssClass());
-		sb.append("'>");
+		sb.append(" popover' >");
 		sb.append(nummer);
 		sb.append("</div>");
 		return sb.toString();

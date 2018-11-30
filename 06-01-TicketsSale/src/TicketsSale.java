@@ -115,7 +115,7 @@ public class TicketsSale {
 		System.out.println(ticketarray[value - 1].lastName);
 		String lastName = lastNameInput.toLowerCase();
 			try {
-				if(ticketarray[value - 1].status.equals(TicketStatus.FREE) || ticketarray[value - 1].lastName.equals(null) && open == true)
+				if(ticketarray[value - 1].status.equals(TicketStatus.FREE) || ticketarray[value - 1].lastName.equals("null") && open == true)
 				{
 					System.out.println("Your Seat is booked");
 					System.out.println();
@@ -283,7 +283,7 @@ public class TicketsSale {
 			for(Ticket ticket : ticketarray) {
 				sb.append("<td>");
 				sb.append(ticket.toHTML());
-				sb.append("<td>");
+				sb.append("</td>");
 				if (i%10 == 0) {
 					sb.append("</tr>");
 					sb.append("<tr>");
