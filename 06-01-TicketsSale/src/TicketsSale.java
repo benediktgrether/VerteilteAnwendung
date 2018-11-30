@@ -1,18 +1,9 @@
-//import java.util.Vector;
-import java.util.Scanner;
 
 import exception.TicketSaleException;
-
-
-/*public class TicketsSale<Ticket> {
-
-	Vector<Ticket> ticketsList = new Vector<Ticket>();
-	*/
 
 public class TicketsSale {
 
 	private Ticket []ticketarray = new Ticket[100];
-	private static boolean runTime = true;
 	private boolean open = true;
 
 	public TicketsSale()
@@ -21,78 +12,6 @@ public class TicketsSale {
 			ticketarray[i] = new Ticket(i + 1, null );
 		}
 	}
-	
-	// public static void main(String[] args) {
-	// 	TicketsSale tickets = new TicketsSale();
-	// 	//tickets.buyFreeTickets(seatNumber);
-	// 	//tickets.runTimeTicket(tickets);
-	// }
-	
-	/*
-	public void runTimeTicket(TicketsSale tickets)
-	{
-		while(runTime == true)
-		{
-			//consoleInput();
-			System.out.println("Overview O, Sell s, Reservation r, Buyreservation br, Cancle c, DebugClear clear ");
-			switch(consoleInput().toLowerCase())
-			{
-				case "overview": case "o":
-					tickets.overviewTickets();
-					break;
-				
-				case "sell": case "s":
-					tickets.buyFreeTickets(consoleInput());
-						break;
-				
-				case "reservation": case "r":
-					tickets.reservTickets(consoleInput());
-					break;
-					
-				case "sellreservation": case "sr":
-					tickets.buyReservTickets(consoleInput());
-					break;
-					
-				case "cancel": case "c":
-					tickets.cancelTickets(consoleInput());
-					break;
-					
-				case "clear":
-					tickets.clearReservation();
-					break;
-					
-				case "quit": case "q":
-					runTime = false;
-					break;
-			}
-
-			//System.out.println(tickets.overviewTickets(1));
-		}
-	}
-	
-	*/
-	// private String consoleInput()
-	// {
-	// 	System.out.print("Your input > ");
-	// 	@SuppressWarnings("resource")
-	// 	Scanner sc = new Scanner(System.in);
-	// 	String input = sc.nextLine();
-	// 	return input;
-	// }
-
-	// private int inputValue(String seatNumber) {
-	// 	try {
-	// 		int value = Integer.parseInt(seatNumber);
-	// 		return value;
-	// 	}
-	// 	catch(Exception E)
-	// 	{
-	// 		System.out.println("Wrong Input");
-	// 		System.out.println();
-	// 	}
-		
-	// 	return -1;
-	// }
 
 	public void overviewTickets()
 	{
