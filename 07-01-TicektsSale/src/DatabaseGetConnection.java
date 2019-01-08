@@ -11,16 +11,16 @@ public class DatabaseGetConnection {
 	
 	private DataSource datasource;
 	
-	public DatabaseGetConnection() {
+	public DatabaseGetConnection(DataSource datasource) {
 		Connection connection = null;
 		
 		try 
 		{
-			Context ic = new InitialContext();
-			this.datasource = (DataSource) ic.lookup("java:/comp/env/jdbc/KartenverkaufDB");
+			
+			this.datasource = datasource;
 			connection = this.datasource.getConnection();
 			Statement s = connection.createStatement();
-			ResultSet rs = s.executeQuery("Select * from TicketsSales");
+			ResultSet rs = s.executeQuery("Select * from kartenverkauf");
 			if(rs.next()) {
 				System.out.println(rs.getInt("id"));
 			}

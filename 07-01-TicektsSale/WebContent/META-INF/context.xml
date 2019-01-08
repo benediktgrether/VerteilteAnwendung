@@ -3,7 +3,7 @@
 	<Resource name="jdbc/KartenverkaufDB"
 		auth="Container" type="javax.sql.DataSource"
 		username="root" password="1234root"
-		driverClassName="com.mysql.jdbc.Driver"
+		driverClassName="com.mysql.cj.jdbc.Driver"
 		url="jdbc:mysql://127.0.0.1:3306/KartenverkaufDB"
 		removeAbandoned="true" removeAbandonedTimeout="300"
 		logAbandoned="true"/>

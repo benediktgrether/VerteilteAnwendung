@@ -1,8 +1,12 @@
 
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import javax.sql.DataSource;
 
 /**
  * Application Lifecycle Listener implementation class TicketSaleListener
@@ -27,8 +31,18 @@ public class TicketSaleListener implements ServletContextListener {
          // TODO Auto-generated method stub
 		System.out.println("Server started");
 		TicketsSale ts = new TicketsSale();
-		DatabaseGetConnection db = new DatabaseGetConnection();
-		sce.getServletContext().setAttribute("ts", ts);
+		try {
+		Context ic = new InitialContext();
+		DataSource datasource;
+		
+			datasource = (DataSource) ic.lookup("java:/comp/env/jdbc/KartenverkaufDB");
+			DatabaseGetConnection db = new DatabaseGetConnection(datasource);
+			sce.getServletContext().setAttribute("ts", ts);
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
     }
 	
