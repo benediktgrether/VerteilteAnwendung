@@ -1,0 +1,54 @@
+public TicketsSale fetchTicketSale(int id) {
+		TicketsSale ticketSale = null;
+		Connection connection = null;
+		
+		try {
+			connection = this.datasource.getConnection();
+			Statement s = connection.createStatement();
+			
+			ResultSet rs = s.executeQuery("SELECT * FROM TicketSales WHERE id = '" + id + "'");
+			String name =  "";
+			if(rs.next()) {
+				name = rs.getString("name");
+			}
+			boolean acceptReservations = rs.getBoolean("accept_reservations");
+			
+			s = connection.createStatement();
+			rs = s.executeQuery("SELECT * FROM Tickets WHERE ticketsale_id = '" + id + "'");
+			
+			int numberOfTickets = 0;
+			if (rs.last()) {
+			    numberOfTickets = rs.getRow();
+			    rs.beforeFirst();
+			}
+			Ticket[] tickets = new Ticket[numberOfTickets];
+			
+			while (rs.next()) {
+				//tickets[rs.getInt("number") - 1] = new Ticket(rs.getInt("id"), TicketStatus.getStatus(rs.getInt("status")), rs.getString("reserved_on"));
+	        }
+			
+			ticketSale = new TicketsSale();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
+		
+		return ticketSale;
+	}
+	
+	public void updateTickets(Ticket[] tickets) {
+		Connection connection = null;
+		
+		try {
+			connection = this.datasource.getConnection();
+			PreparedStatement psUpdateTicket = connection.prepareStatement("UPDATE Tickets SET status = ?, reserved_on = ? WHERE id = ?");
+			
+			for(Ticket ticket : tickets) {
+				//psUpdateTicket.setInt(1, ticket.status.id);
+				//psUpdateTicket.setString(2, ticket.reservedOn);
+				//psUpdateTicket.setInt(3, ticket.id);
+				//psUpdateTicket.execute();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
+	}

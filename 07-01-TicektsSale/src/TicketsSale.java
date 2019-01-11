@@ -1,15 +1,21 @@
 
+//import javax.sql.DataSource;
+
 import exception.TicketSaleException;
 
 public class TicketsSale {
 
-	private Ticket []ticketarray = new Ticket[100];
+	public Ticket []ticketarray = new Ticket[100];
 	private boolean open = true;
+	public boolean acceptReservations;
+	public DatabaseGetConnection db;
+	
 
 	public TicketsSale()
 	{
 		for (int i = 0; i < ticketarray.length; i++) {
-			ticketarray[i] = new Ticket(i + 1, null );
+			ticketarray[i] = new Ticket(i + 1, null, TicketStatus.FREE);
+			
 		}
 	}
 
@@ -40,6 +46,8 @@ public class TicketsSale {
 					System.out.println();
 					ticketarray[value - 1].status = TicketStatus.SOLD;
 					ticketarray[value - 1].lastName = lastName;
+					this.db.updateTickets(new Ticket[] {ticketarray[value - 1]});
+					
 				}
 				else {
 					System.out.println("Seat not free");
@@ -73,6 +81,7 @@ public class TicketsSale {
 					System.out.println("Your Seat is reserved");
 					ticketarray[value - 1].status = TicketStatus.RESERVED;
 					ticketarray[value - 1].lastName = lastName;
+					this.db.updateTickets(new Ticket[] {ticketarray[value - 1]});
 				}
 				else if(ticketarray[value-1].status.equals(TicketStatus.SOLD))
 				{
@@ -172,6 +181,8 @@ public class TicketsSale {
 	
 	public synchronized void clearReservation()
 	{
+		acceptReservations = false;
+		this.db.updateTicketSale(this);
 		System.out.println("test");
 		for(int i = 0; i < ticketarray.length; i++)
 		{

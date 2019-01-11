@@ -5,11 +5,12 @@ public class Ticket {
 	String lastName;
 	TicketStatus status;
 	
-	public Ticket(int nummer, String lastName) {
+	
+	public Ticket(int nummer, String lastName, TicketStatus status) {
 		
 		this.nummer = nummer;
 		this.lastName = lastName;
-		this.status = TicketStatus.FREE;
+		this.status = status;
 		
 	}
 

@@ -24,4 +24,12 @@ public enum TicketStatus {
 		
 	}
 	
+	public static TicketStatus getByLetter(char id) {
+		for(TicketStatus status : values()) {
+			if(status.status == id)
+				return status;
+		}
+		return null;
+	}
+	
 }

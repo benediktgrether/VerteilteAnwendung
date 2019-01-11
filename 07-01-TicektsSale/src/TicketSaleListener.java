@@ -36,7 +36,9 @@ public class TicketSaleListener implements ServletContextListener {
 		DataSource datasource;
 		
 			datasource = (DataSource) ic.lookup("java:/comp/env/jdbc/KartenverkaufDB");
-			DatabaseGetConnection db = new DatabaseGetConnection(datasource);
+			DatabaseGetConnection db = new DatabaseGetConnection(datasource, ts);
+			//ts.db = db.datasource;
+			db.fetchTicketsSale();
 			sce.getServletContext().setAttribute("ts", ts);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
