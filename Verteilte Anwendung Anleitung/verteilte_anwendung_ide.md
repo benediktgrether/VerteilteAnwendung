@@ -27,7 +27,7 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 
 ![image](./img/002_image.png)
 
-5. Workspace auswählen. Danach sollte dieser Startdialog kommen. Darauf ist zu Achten was im Header steht. Eclipse Java EE IDE for Web Developers.
+1. Workspace auswählen. Danach sollte dieser Startdialog kommen. Darauf ist zu achten das Eclipse Java EE IDE for Web Developers im Header steht.
 
 ![image](./img/003_image.png)
 
@@ -36,20 +36,20 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 ## Installierung von Tomcat Server 
 
 [Download Tomcat](http://tomcat.apache.org/download-90.cgi) -> Die Core Datei [zip(pgp, sha512)](https://www-eu.apache.org/dist/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.zip)
-> Speichere den Download von Tomcat am besten in deinem Download ordner ab.
+> Speichere den Download von Tomcat am besten in deinem Download Ordner ab.
 
 1. Tomcat zip File in Downloads entpacken. (Nach der Installation von Tomcat kann man diese Zip Datei wieder löschen.)
 2. Terminal öffnen.
 3. Nun wird die entpackte Datei verschoben. <br> 
 ```sudo mkdir -p /usr/local ``` <br>
 ```sudo mv ~/Downloads/apache-tomcat-9.0.16 /usr/local```<br>
-! Bitte beachten welche Version runtergeladen wurde. Die Versionsnummer gegebenfalls Austauschen (tomcat-9.0.13).
+! Bitte beachten welche Version runtergeladen wurde. Die Versionsnummer gegebenfalls Austauschen (tomcat-9.0.16).
 
 4. Um später einfacher eine neuere Version zu Integrieren ersetzen wir den Tomcat Ordner in /Library/Tomcat durch einen symbolic Link aus unserem usr/local ordner. <br>
 ```sudo rm -f /Library/Tomcat```<br>
 ```sudo ln -s /usr/local/apache-tomcat-9.0.16 /Library/Tomcat```<br>
 
-5. Nun ändern wir noch den Eigentümer-Benutzers um mit dem Ordner arbeiten zu können. (Usernamen ohne spitzeklammern.) <br>
+1. Nun ändern wir noch die Rechte des Ordners.(Usernamen ohne Spitze klammern.) <br>
 ```sudo chown -R <your_username> /Library/Tomcat```<br>
 > ```sudo chown -R benediktgrether /Library/Tomcat ```<br>
 
@@ -89,7 +89,7 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 
 [MYSQL](https://dev.mysql.com/downloads/mysql/) herunterladen.
 
-1. Am Ende der Installation wird gefordert das man ein Passwort erstellt. Dort wählt man nun Use Legacy Password Encryption
+1. Am Ende der Installation wird gefordert das man ein Passwort erstellt. Dort wählt man nun Use Legacy Password Encryption <br>
 ![image](./img/008_image.png)<br><br>
 
 2. Nun ein Passwort wählen und auf Finish klicken und den MacBook neustarten.
