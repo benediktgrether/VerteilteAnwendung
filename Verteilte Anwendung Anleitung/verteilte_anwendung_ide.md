@@ -70,17 +70,20 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 
 1. Eclipse öffnen.
 2. Willkommens Fenster schließen.
-3. Unten in der Leiste Server auswählen
+3. Unten in der Leiste Server auswählen <br>
+
 ![image](./img/005_image.png)<br><br>
 4. Neuen Server erstellen
 5. Den Apache Dropdown Ordner auswählen
 6. Tomcat v9.0 Server auswählen -> Next
 7. Bei Tomcat installation directory auf Browse klicken
-8. Nun im Dropdown Menü Festplatte auswählen.
+8. Nun im Dropdown Menü Festplatte auswählen.<br>
+
 ![image](./img/006_image.png)<br><br>
 9. Nun Library -> Tomcat auswählen und auf Open clicken.
 10. Finsihed und dann Server starten klicken.
-11. Wenn alles funktioniert, steht in der Leiste Tomact v9.0 Server at Localhost[Started, Synchronized].
+11. Wenn alles funktioniert, steht in der Leiste Tomact v9.0 Server at Localhost[Started, Synchronized].<br>
+
 ![image](./img/007_image.png)<br><br>
 
 <hr>
@@ -90,12 +93,15 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 [MYSQL](https://dev.mysql.com/downloads/mysql/) herunterladen.
 
 1. Am Ende der Installation wird gefordert das man ein Passwort erstellt. Dort wählt man nun Use Legacy Password Encryption <br>
+
 ![image](./img/008_image.png)<br><br>
 
-2. Nun ein Passwort wählen und auf Finish klicken und den MacBook neustarten.
+2. Nun ein Passwort wählen und auf Finish klicken und den MacBook neustarten.<br>
+
 ![image](./img/009_image.png)<br><br>
 
-3. Nun in den Systemeinstellungen überprüfen ob MySQL installiert ist, und überprüfen ob MySQL läuft.
+3. Nun in den Systemeinstellungen überprüfen ob MySQL installiert ist, und überprüfen ob MySQL läuft.<br>
+
 ![image](./img/010_image.png)<br><br>
 ![image](./img/011_image.png)<br><br>
 
@@ -129,7 +135,7 @@ Im Terminal folgenden Befehl eingeben <br>
    > Database und Port sind optional falls ein anderer Port wie 3306 in Verwendung ist.<br>
 
 ![image](./img/013_image.png)<br><br>
-6. Connect
+6. Connect <br>
    
 7. Nun wird eine neue Datenbank angelegt. <br>
 ![image](./img/014_image.png)<br><br>
@@ -140,21 +146,27 @@ Im Terminal folgenden Befehl eingeben <br>
 
 1. Nun laden wir ein MySQL Package für Java herunter. <br>
 [MySQL Package](https://www.mysql.com/de/products/connector/) <br> und wählen da JDBC Driver for MySQL (Connector/J) aus <br>
+
 ![image](./img/015_image.png)<br><br>
 > Achtet beim Downloaden auf eure Aktuelle MySQL Version damit ihr den richtigen Connector auswählt.
 1. Auf der Webseite wählen wir nun Platform Indepentent aus und Laden die Zip oder .tar Datei herunter.
 2. Nun kopieren wir die Datei <br>
 ```mysql-connector-java-8.0.15.jar``` <br>
 in den Ordner <br> ```Library/Tomact/lib/``` <br>
-hinein.
+hinein. <br>
+
 ![image](./img/016_image.png)<br><br>
-3. In Eclipse gehen wir auf den Reiter auf Data Source Explore und Database Connections mit rechtsklick und auf New
+3. In Eclipse gehen wir auf den Reiter auf Data Source Explore und Database Connections mit rechtsklick und auf New <br>
+
 ![image](./img/017_image.png)<br><br>
 4. Nun Generic JDBC auswählen und auf Next <br>
+
 ![image](./img/018_image.png)<br><br>
-5. Nun werden wir einen neuen Driver hinzufügen in dem auf JAR List klicken und dann auf ADD JAR/Zip. Nun gehen wir wieder in den Library/Tomcat/lib/ Ordner und wählen mysql-connector-java-xxx.jar aus.
+5. Nun werden wir einen neuen Driver hinzufügen in dem auf JAR List klicken und dann auf ADD JAR/Zip. Nun gehen wir wieder in den Library/Tomcat/lib/ Ordner und wählen mysql-connector-java-xxx.jar aus.<br>
+
 ![image](./img/019_image.png)<br><br> 
-6. Danach Klicken wir auf Properties (es kann sein das Propertie nicht beim ersten mal Auftaucht. Bitte dann bei Driver files den Connector auswählen -> oder Edit und dann auf Abbrechen klicken und zurück in den Properties Reiter wieder Wechseln bis diese Abbildung dargestellt wird).
+6. Danach Klicken wir auf Properties (es kann sein das Propertie nicht beim ersten mal Auftaucht. Bitte dann bei Driver files den Connector auswählen -> oder Edit und dann auf Abbrechen klicken und zurück in den Properties Reiter wieder Wechseln bis diese Abbildung dargestellt wird). <br>
+   
 ![image](./img/020_image.png)<br><br> 
 7. Nun geben wir diese Werte ein.
 > Connection URL : jdbc:mysql://127.0.0.1:3306/Name-der-Datenbank <br>
