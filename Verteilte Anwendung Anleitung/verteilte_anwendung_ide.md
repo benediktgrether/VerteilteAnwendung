@@ -68,6 +68,15 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 
 ## Tomcat mit Eclipse IDE for Enterprise Java Developers verbinden
 
-
+1. Eclipse öffnen.
+2. Willkommens Fenster schließen.
+3. Unten in der Leiste Server auswählen
+![image](./img/005_image.png)<br><br>
+4. Neuen Server erstellen
+5. Den Apache Dropdown Ordner auswählen
+6. Tomcat v9.0 Server auswählen -> Next
+7. Bei Tomcat installation directory auf Browse klicken
+8. Nun im Dropdown Menü Festplatte auswählen.
+![image](./img/006_image.png)<br><br>
 
 <!-- brew cask install homebrew/cask-versions/sequel-pro-nightly -->
