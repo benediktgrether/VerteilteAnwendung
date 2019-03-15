@@ -80,8 +80,8 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 8. Nun im Dropdown Menü Festplatte auswählen.<br>
 
 ![image](./img/006_image.png)<br><br>
-9. Nun Library -> Tomcat auswählen und auf Open clicken.
-10. Finsihed und dann Server starten klicken.
+9. Nun Library -> Tomcat auswählen und auf Open clicken. <br>
+10. Finsihed und dann Server starten klicken. <br>
 11. Wenn alles funktioniert, steht in der Leiste Tomact v9.0 Server at Localhost[Started, Synchronized].<br>
 
 ![image](./img/007_image.png)<br><br>
