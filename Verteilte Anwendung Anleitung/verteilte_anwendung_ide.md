@@ -126,7 +126,7 @@ Im Terminal folgenden Befehl eingeben <br>
    > Host: 127.0.0.1 <br>
    > Username: root <br>
    > Password: ****** <br>
-   > Database und Port sind optional falls ein anderer Port wie 3306 in verwendung ist.<br>
+   > Database und Port sind optional falls ein anderer Port wie 3306 in Verwendung ist.<br>
 
 ![image](./img/013_image.png)<br><br>
 6. Connect
@@ -154,12 +154,13 @@ hinein.
 ![image](./img/018_image.png)<br><br>
 5. Nun werden wir einen neuen Driver hinzufügen in dem auf JAR List klicken und dann auf ADD JAR/Zip. Nun gehen wir wieder in den Library/Tomcat/lib/ Ordner und wählen mysql-connector-java-xxx.jar aus.
 ![image](./img/019_image.png)<br><br> 
-6. Danach Klicken wir auf Properties (es kann sein das Propertie nicht beim ersten mal Auftaucht. Bitte dann bei Driver files den Connector auswählen -> oder Edit und dann auf Abbrechen klicken und zurück in den Properties Reiter wieder wechseln bis diese Abbildung dargestellt wird).
+6. Danach Klicken wir auf Properties (es kann sein das Propertie nicht beim ersten mal Auftaucht. Bitte dann bei Driver files den Connector auswählen -> oder Edit und dann auf Abbrechen klicken und zurück in den Properties Reiter wieder Wechseln bis diese Abbildung dargestellt wird).
 ![image](./img/020_image.png)<br><br> 
-7. Nun geben wir diese Values ein.
+7. Nun geben wir diese Werte ein.
 > Connection URL : jdbc:mysql://127.0.0.1:3306/Name-der-Datenbank <br>
 > Database Name : "Name wie die Datenbank heißt"<br>
 > Driver Class : -> Hier nun auf die ... Punkte klicken.<br>
+
 ![image](./img/021_image.png)<br><br> 
 Hier wählen wir nun den untersten Database Driver aus 
 ![image](./img/022_image.png)<br><br> 
