@@ -73,10 +73,10 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 3. Unten in der Leiste Server auswählen <br>
 
 ![image](./img/005_image.png)<br><br>
-4. Neuen Server erstellen
-5. Den Apache Dropdown Ordner auswählen
-6. Tomcat v9.0 Server auswählen -> Next
-7. Bei Tomcat installation directory auf Browse klicken
+4. Neuen Server erstellen <br>
+5. Den Apache Dropdown Ordner auswählen <br>
+6. Tomcat v9.0 Server auswählen -> Next <br>
+7. Bei Tomcat installation directory auf Browse klicken <br>
 8. Nun im Dropdown Menü Festplatte auswählen.<br>
 
 ![image](./img/006_image.png)<br><br>
