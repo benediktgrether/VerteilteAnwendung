@@ -116,7 +116,7 @@ ein
 Im Terminal folgenden Befehl eingeben <br>
 ``` /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
 
-3. Nun installieren wir Sequel Pro über Homebrew (Es kann sein das erst ein Update von Homebrew durchführt.) <br>
+3. Nun installieren wir Sequel Pro über Homebrew (Es kann sein das erst ein Update von Homebrew durchgeführt wird.) <br>
 ```brew cask install homebrew/cask-versions/sequel-pro-nightly```
 
 ![image](./img/012_image.png)<br><br>
