@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Verteilte Anwendung</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="verteilte-anwendung">Verteilte Anwendung</h1>
+<h2 id="entwicklungsumgebung-eclipse-java-web-tools-platform">Entwicklungsumgebung Eclipse Java Web Tools Platform</h2>
+<p><a href="https://www.eclipse.org/webtools/">Entwicklungsumgebung Java Web Tools</a> Downloaden.</p>
+<blockquote>
+<p>Im Terminal überprüfen ob Java JDK installiert ist.</p>
+</blockquote>
+<pre><code class="language-Terminal"><div>    java -version
+</div></code></pre>
+<blockquote>
+<p>Falls Java JDK noch nicht installiert ist <br>
+<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">Java JDK</a></p>
+</blockquote>
+<hr>
+<h3 id="eclipse-ide-for-enterprise-java-developers-installieren">Eclipse IDE for Enterprise Java Developers installieren</h3>
+<ol>
+<li>Eclipse öffnen <br></li>
+<li>Eclipse in Applications Ordner verschieben <br></li>
+<li>Eclipse in Applications Ordner (Finder -&gt; Programme) suchen und öffnen. <br></li>
+<li>Beim ersten Starten wird über ein Dialog Fenster abgefragt, <br></li>
+</ol>
+<blockquote>
+<p>„Eclipse“ ist eine aus dem Internet geladene App. Möchtest du sie wirklich öffnen? <br>
+und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster nicht erscheint und das Programm nicht startet, siehe Punkt 4.1.) <br></p>
+</blockquote>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/001_image.png" alt="image"></p>
+<p>4.1. Systemeinstellung öffnen -&gt; Sicherheit -&gt; Allgemein -&gt; Apps - Downlaod erlauben von -&gt; Und dort dann zulassen.</p>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/002_image.png" alt="image"></p>
+<ol start="5">
+<li>Workspace auswählen. Danach sollte dieser Startdialog kommen. Darauf ist zu achten das Eclipse Java EE IDE for Web Developers im Header steht.</li>
+</ol>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/003_image.png" alt="image"></p>
+<hr>
+<h2 id="installierung-von-tomcat-server">Installierung von Tomcat Server</h2>
+<p><a href="http://tomcat.apache.org/download-90.cgi">Download Tomcat</a> -&gt; Die Core Datei <a href="https://www-eu.apache.org/dist/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.zip">zip(pgp, sha512)</a></p>
+<blockquote>
+<p>Speichere den Download von Tomcat am besten in deinem Download Ordner ab.</p>
+</blockquote>
+<ol>
+<li>
+<p>Tomcat zip File in Downloads entpacken. (Nach der Installation von Tomcat kann man diese Zip Datei wieder löschen.) <br></p>
+</li>
+<li>
+<p>Terminal öffnen. <br></p>
+</li>
+<li>
+<p>Nun wird die entpackte Datei verschoben. <br>
+<code>sudo mkdir -p /usr/local</code> <br>
+<code>sudo mv ~/Downloads/apache-tomcat-9.0.16 /usr/local</code><br>
+! Bitte beachten welche Version runtergeladen wurde. Die Versionsnummer gegebenfalls Austauschen (tomcat-9.0.16). <br></p>
+</li>
+<li>
+<p>Um später einfacher eine neuere Version zu Integrieren ersetzen wir den Tomcat Ordner in /Library/Tomcat durch einen symbolic Link aus unserem usr/local ordner. <br>
+<code>sudo rm -f /Library/Tomcat</code><br>
+<code>sudo ln -s /usr/local/apache-tomcat-9.0.16 /Library/Tomcat</code><br></p>
+</li>
+<li>
+<p>Nun ändern wir noch die Rechte des Ordners.(Usernamen ohne Spitze klammern.) <br>
+<code>sudo chown -R &lt;your_username&gt; /Library/Tomcat</code><br></p>
+</li>
+</ol>
+<blockquote>
+<p><code>sudo chown -R benediktgrether /Library/Tomcat</code><br></p>
+</blockquote>
+<ol start="6">
+<li>
+<p>Alle Script ausführbar machen.<br>
+<code>sudo chmod +x /Library/Tomcat/bin/*.sh</code> <br></p>
+</li>
+<li>
+<p>Server starten<br>
+<code>/Library/Tomcat/bin/startup.sh</code><br></p>
+</li>
+<li>
+<p>Server stoppen<br>
+<code>/Library/Tomcat/bin/shutdown.sh</code></p>
+</li>
+</ol>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/004_image.png" alt="image"></p>
+<hr>
+<h2 id="tomcat-mit-eclipse-ide-for-enterprise-java-developers-verbinden">Tomcat mit Eclipse IDE for Enterprise Java Developers verbinden</h2>
+<ol>
+<li>Eclipse öffnen. <br></li>
+<li>Willkommens Fenster schließen. <br></li>
+<li>Unten in der Leiste Server auswählen <br></li>
+</ol>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/005_image.png" alt="image"><br><br>
+4. Neuen Server erstellen <br>
+5. Den Apache Dropdown Ordner auswählen <br>
+6. Tomcat v9.0 Server auswählen -&gt; Next <br>
+7. Bei Tomcat installation directory auf Browse klicken <br>
+8. Nun im Dropdown Menü Festplatte auswählen.<br></p>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/006_image.png" alt="image"><br><br>
+9. Nun Library -&gt; Tomcat auswählen und auf Open clicken. <br>
+10. Finsihed und dann Server starten klicken. <br>
+11. Wenn alles funktioniert, steht in der Leiste Tomact v9.0 Server at Localhost[Started, Synchronized].<br></p>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/007_image.png" alt="image"><br><br></p>
+<hr>
+<h2 id="installation-von-mysql">Installation von MySQL</h2>
+<p><a href="https://dev.mysql.com/downloads/mysql/">MYSQL</a> herunterladen.</p>
+<ol>
+<li>Am Ende der Installation wird gefordert das man ein Passwort erstellt. Dort wählt man nun Use Legacy Password Encryption <br></li>
+</ol>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/008_image.png" alt="image"><br><br></p>
+<ol start="2">
+<li>Nun ein Passwort wählen und auf Finish klicken und den MacBook neustarten.<br></li>
+</ol>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/009_image.png" alt="image"><br><br></p>
+<ol start="3">
+<li>Nun in den Systemeinstellungen überprüfen ob MySQL installiert ist, und überprüfen ob MySQL läuft.<br></li>
+</ol>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/010_image.png" alt="image"><br><br>
+<img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/011_image.png" alt="image"><br><br></p>
+<hr>
+<h2 id="installation-von-sequel-pro">Installation von Sequel Pro</h2>
+<p>Sequel Pro über Homebrew installieren.</p>
+<ol>
+<li>Überprüfen ob Homebrew installiert ist. Dazu geben wir im Terminal<br>
+<code>which brew</code> <br>
+ein</li>
+</ol>
+<blockquote>
+<p>Homebrew ist installiert -&gt; /usr/local/bin/brew -&gt; weiter mit Punkt 3 <br>
+Homebrew ist nicht installiert -&gt; brew not found -&gt; weiter mit Punkt 2 <br></p>
+</blockquote>
+<ol start="2">
+<li>
+<p>Installieren von Homebrew falls es noch nicht vorhanden ist.<br>
+<a href="https://brew.sh/index_de">Homebrew Documentation</a><br>
+Im Terminal folgenden Befehl eingeben <br>
+<code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
+</li>
+<li>
+<p>Nun installieren wir Sequel Pro über Homebrew (Es kann sein das erst ein Update von Homebrew durchgeführt wird.) <br>
+<code>brew cask install homebrew/cask-versions/sequel-pro-nightly</code></p>
+</li>
+</ol>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/012_image.png" alt="image"><br><br></p>
+<ol start="4">
+<li>Sequel Pro starten.</li>
+<li>Im Connectionfenster nun TCP/IP auswählen und Daten eingeben.
+<blockquote>
+<p>Host: 127.0.0.1 <br>
+Username: root <br>
+Password: ****** <br>
+Database und Port sind optional falls ein anderer Port wie 3306 in Verwendung ist.<br></p>
+</blockquote>
+</li>
+</ol>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/013_image.png" alt="image"><br><br>
+6. Connect <br></p>
+<ol start="7">
+<li>Nun wird eine neue Datenbank angelegt. <br>
+<img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/014_image.png" alt="image"><br><br></li>
+</ol>
+<hr>
+<h2 id="datenbank-mit-eclipse-ide-for-enterprise-java-developers-verbinden">Datenbank mit Eclipse IDE for Enterprise Java Developers verbinden</h2>
+<ol>
+<li>Nun laden wir ein MySQL Package für Java herunter. <br>
+<a href="https://www.mysql.com/de/products/connector/">MySQL Package</a> <br> und wählen da JDBC Driver for MySQL (Connector/J) aus <br></li>
+</ol>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/015_image.png" alt="image"><br><br></p>
+<blockquote>
+<p>Achtet beim Downloaden auf eure Aktuelle MySQL Version damit ihr den richtigen Connector auswählt.</p>
+</blockquote>
+<ol start="2">
+<li>Auf der Webseite wählen wir nun Platform Indepentent aus und Laden die Zip oder .tar Datei herunter.</li>
+<li>Nun kopieren wir die Datei <br>
+<code>mysql-connector-java-8.0.15.jar</code> <br>
+in den Ordner <br> <code>Library/Tomact/lib/</code> <br>
+hinein. <br></li>
+</ol>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/016_image.png" alt="image"><br><br>
+4. In Eclipse gehen wir auf den Reiter auf Data Source Explore und Database Connections mit rechtsklick und auf New <br></p>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/017_image.png" alt="image"><br><br>
+5. Nun Generic JDBC auswählen und auf Next <br></p>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/018_image.png" alt="image"><br><br>
+6. Nun werden wir einen neuen Driver hinzufügen in dem auf JAR List klicken und dann auf ADD JAR/Zip. Nun gehen wir wieder in den Library/Tomcat/lib/ Ordner und wählen mysql-connector-java-xxx.jar aus.<br></p>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/019_image.png" alt="image"><br><br>
+7. Danach Klicken wir auf Properties (es kann sein das Propertie nicht beim ersten mal Auftaucht. Bitte dann bei Driver files den Connector auswählen -&gt; oder Edit und dann auf Abbrechen klicken und zurück in den Properties Reiter wieder Wechseln bis diese Abbildung dargestellt wird). <br></p>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/020_image.png" alt="image"><br><br>
+8. Nun geben wir diese Werte ein.</p>
+<blockquote>
+<p>Connection URL : jdbc:mysql://127.0.0.1:3306/Name-der-Datenbank <br>
+Database Name : &quot;Name wie die Datenbank heißt&quot;<br>
+Driver Class : -&gt; Hier nun auf die ... Punkte klicken.<br></p>
+</blockquote>
+<p><img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/021_image.png" alt="image"><br><br>
+Hier wählen wir nun den untersten Database Driver aus
+<img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/022_image.png" alt="image"><br><br>
+9. Nun auf Ok klicken und im nächsten Fenster geben wir nun folgende Sachen ein.</p>
+<blockquote>
+<p>Database: &quot;Name der Datenbank&quot; <br>
+URL:  dbc:mysql://127.0.0.1:3306/Name-der-Datenbank <br>
+User name: root <br>
+Password: ******* <br></p>
+</blockquote>
+<p>Dann die Checkbox Save Passwort auswählen und danach auf Test Connection.
+<img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/023_image.png" alt="image"><br><br>
+10. Bei erfolgreichem Test kommt dieser Dialog
+<img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/024_image.png" alt="image"><br><br>
+11. Nun auf Finish klicken und die Datenbank wird nun im Data Source Explorer angezeigt.
+<img src="file:///Users/benediktgrether/Desktop/VerteilteAnwendung/Verteilte Anwendung Anleitung/img/025_image.png" alt="image"><br><br></p>
+
+    </body>
+    </html>
