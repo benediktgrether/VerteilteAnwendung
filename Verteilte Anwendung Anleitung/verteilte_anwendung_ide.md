@@ -14,12 +14,12 @@
 
 ### Eclipse IDE for Enterprise Java Developers installieren
 
-1. Eclipse öffnen
-2. Eclipse in Applications Ordner verschieben
-3. Eclipse in Applications Ordner (Finder -> Programme) suchen und öffnen.
-4. Beim ersten Starten wird über ein Dialog Fenster abgefragt,
-> „Eclipse“ ist eine aus dem Internet geladene App. Möchtest du sie wirklich öffnen?
-und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster nicht erscheint und das Programm nicht startet, siehe Punkt 4.1.)
+1. Eclipse öffnen <br>
+2. Eclipse in Applications Ordner verschieben <br>
+3. Eclipse in Applications Ordner (Finder -> Programme) suchen und öffnen. <br>
+4. Beim ersten Starten wird über ein Dialog Fenster abgefragt, <br>
+> „Eclipse“ ist eine aus dem Internet geladene App. Möchtest du sie wirklich öffnen? <br>
+und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster nicht erscheint und das Programm nicht startet, siehe Punkt 4.1.) <br>
 
 ![image](./img/001_image.png)
 
@@ -27,7 +27,7 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 
 ![image](./img/002_image.png)
 
-1. Workspace auswählen. Danach sollte dieser Startdialog kommen. Darauf ist zu achten das Eclipse Java EE IDE for Web Developers im Header steht.
+5. Workspace auswählen. Danach sollte dieser Startdialog kommen. Darauf ist zu achten das Eclipse Java EE IDE for Web Developers im Header steht.
 
 ![image](./img/003_image.png)
 
@@ -38,12 +38,12 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 [Download Tomcat](http://tomcat.apache.org/download-90.cgi) -> Die Core Datei [zip(pgp, sha512)](https://www-eu.apache.org/dist/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.zip)
 > Speichere den Download von Tomcat am besten in deinem Download Ordner ab.
 
-1. Tomcat zip File in Downloads entpacken. (Nach der Installation von Tomcat kann man diese Zip Datei wieder löschen.)
-2. Terminal öffnen.
+1. Tomcat zip File in Downloads entpacken. (Nach der Installation von Tomcat kann man diese Zip Datei wieder löschen.) <br>
+2. Terminal öffnen. <br>
 3. Nun wird die entpackte Datei verschoben. <br> 
 ```sudo mkdir -p /usr/local ``` <br>
 ```sudo mv ~/Downloads/apache-tomcat-9.0.16 /usr/local```<br>
-! Bitte beachten welche Version runtergeladen wurde. Die Versionsnummer gegebenfalls Austauschen (tomcat-9.0.16).
+! Bitte beachten welche Version runtergeladen wurde. Die Versionsnummer gegebenfalls Austauschen (tomcat-9.0.16). <br>
 
 4. Um später einfacher eine neuere Version zu Integrieren ersetzen wir den Tomcat Ordner in /Library/Tomcat durch einen symbolic Link aus unserem usr/local ordner. <br>
 ```sudo rm -f /Library/Tomcat```<br>
@@ -68,8 +68,8 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 
 ## Tomcat mit Eclipse IDE for Enterprise Java Developers verbinden
 
-1. Eclipse öffnen.
-2. Willkommens Fenster schließen.
+1. Eclipse öffnen. <br>
+2. Willkommens Fenster schließen. <br>
 3. Unten in der Leiste Server auswählen <br>
 
 ![image](./img/005_image.png)<br><br>
