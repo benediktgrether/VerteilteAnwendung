@@ -78,5 +78,9 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 7. Bei Tomcat installation directory auf Browse klicken
 8. Nun im Dropdown Menü Festplatte auswählen.
 ![image](./img/006_image.png)<br><br>
+9. Nun Library -> Tomcat auswählen und auf Open clicken.
+10. Finsihed und dann Server starten klicken.
+11. Wenn alles funktioniert hat, steht in der Leiste [Started, Synchronized].
+![image](./img/007_image.png)<br><br>
 
 <!-- brew cask install homebrew/cask-versions/sequel-pro-nightly -->
