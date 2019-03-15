@@ -95,7 +95,7 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 2. Nun ein Passwort wählen und auf Finish klicken und den MacBook neustarten.
 ![image](./img/009_image.png)<br><br>
 
-3. Nun in den Systemeinstellungen überprüfen ob MySQL installiert worden ist und ob es gestartet ist.
+3. Nun in den Systemeinstellungen überprüfen ob MySQL installiert ist, und überprüfen ob MySQL läuft.
 ![image](./img/010_image.png)<br><br>
 ![image](./img/011_image.png)<br><br>
 
@@ -108,8 +108,8 @@ Sequel Pro über Homebrew installieren.
 ```which brew``` <br>
 ein 
 
-> Homebrew ist installiert -> /usr/local/bin/brew -> weiter mit Punkt 3 
-> Homebrew ist nicht installiert -> brew not found -> weiter mit Punkt 2
+> Homebrew ist installiert -> /usr/local/bin/brew -> weiter mit Punkt 3 <br>
+> Homebrew ist nicht installiert -> brew not found -> weiter mit Punkt 2 <br>
 
 2. Installieren von Homebrew falls es noch nicht vorhanden ist.<br>
 [Homebrew Documentation](https://brew.sh/index_de)<br>
