@@ -80,7 +80,98 @@ und auf diesem Dialogfenster auf öffnen klicken. (Falls dieses Dialogfenster ni
 ![image](./img/006_image.png)<br><br>
 9. Nun Library -> Tomcat auswählen und auf Open clicken.
 10. Finsihed und dann Server starten klicken.
-11. Wenn alles funktioniert hat, steht in der Leiste [Started, Synchronized].
+11. Wenn alles funktioniert, steht in der Leiste Tomact v9.0 Server at Localhost[Started, Synchronized].
 ![image](./img/007_image.png)<br><br>
 
-<!-- brew cask install homebrew/cask-versions/sequel-pro-nightly -->
+<hr>
+
+## Installation von MySQL
+
+[MYSQL](https://dev.mysql.com/downloads/mysql/) herunterladen.
+
+1. Am Ende der Installation wird gefordert das man ein Passwort erstellt. Dort wählt man nun Use Legacy Password Encryption
+![image](./img/008_image.png)<br><br>
+
+2. Nun ein Passwort wählen und auf Finish klicken und den MacBook neustarten.
+![image](./img/009_image.png)<br><br>
+
+3. Nun in den Systemeinstellungen überprüfen ob MySQL installiert worden ist und ob es gestartet ist.
+![image](./img/010_image.png)<br><br>
+![image](./img/011_image.png)<br><br>
+
+<hr>
+
+## Installation von Sequel Pro
+
+Sequel Pro über Homebrew installieren. 
+1. Überprüfen ob Homebrew installiert ist. Dazu geben wir im Terminal<br>
+```which brew``` <br>
+ein 
+
+> Homebrew ist installiert -> /usr/local/bin/brew -> weiter mit Punkt 3 
+> Homebrew ist nicht installiert -> brew not found -> weiter mit Punkt 2
+
+2. Installieren von Homebrew falls es noch nicht vorhanden ist.<br>
+[Homebrew Documentation](https://brew.sh/index_de)<br>
+Im Terminal folgenden Befehl eingeben <br>
+``` /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
+
+3. Nun installieren wir Sequel Pro über Homebrew (Es kann sein das erst ein Update von Homebrew durchführt.) <br>
+```brew cask install homebrew/cask-versions/sequel-pro-nightly```
+
+![image](./img/012_image.png)<br><br>
+
+4. Sequel Pro starten.
+5. Im Connectionfenster nun TCP/IP auswählen und Daten eingeben.
+   > Host: 127.0.0.1 <br>
+   > Username: root <br>
+   > Password: ****** <br>
+   > Database und Port sind optional falls ein anderer Port wie 3306 in verwendung ist.<br>
+
+![image](./img/013_image.png)<br><br>
+6. Connect
+   
+7. Nun wird eine neue Datenbank angelegt. <br>
+![image](./img/014_image.png)<br><br>
+
+<hr>
+
+## Datenbank mit Eclipse IDE for Enterprise Java Developers verbinden
+
+1. Nun laden wir ein MySQL Package für Java herunter. <br>
+[MySQL Package](https://www.mysql.com/de/products/connector/) <br> und wählen da JDBC Driver for MySQL (Connector/J) aus <br>
+![image](./img/015_image.png)<br><br>
+> Achtet beim Downloaden auf eure Aktuelle MySQL Version damit ihr den richtigen Connector auswählt.
+1. Auf der Webseite wählen wir nun Platform Indepentent aus und Laden die Zip oder .tar Datei herunter.
+2. Nun kopieren wir die Datei <br>
+```mysql-connector-java-8.0.15.jar``` <br>
+in den Ordner <br> ```Library/Tomact/lib/``` <br>
+hinein.
+![image](./img/016_image.png)<br><br>
+3. In Eclipse gehen wir auf den Reiter auf Data Source Explore und Database Connections mit rechtsklick und auf New
+![image](./img/017_image.png)<br><br>
+4. Nun Generic JDBC auswählen und auf Next <br>
+![image](./img/018_image.png)<br><br>
+5. Nun werden wir einen neuen Driver hinzufügen in dem auf JAR List klicken und dann auf ADD JAR/Zip. Nun gehen wir wieder in den Library/Tomcat/lib/ Ordner und wählen mysql-connector-java-xxx.jar aus.
+![image](./img/019_image.png)<br><br> 
+6. Danach Klicken wir auf Properties (es kann sein das Propertie nicht beim ersten mal Auftaucht. Bitte dann bei Driver files den Connector auswählen -> oder Edit und dann auf Abbrechen klicken und zurück in den Properties Reiter wieder wechseln bis diese Abbildung dargestellt wird).
+![image](./img/020_image.png)<br><br> 
+7. Nun geben wir diese Values ein.
+> Connection URL : jdbc:mysql://127.0.0.1:3306/Name-der-Datenbank <br>
+> Database Name : "Name wie die Datenbank heißt"<br>
+> Driver Class : -> Hier nun auf die ... Punkte klicken.<br>
+![image](./img/021_image.png)<br><br> 
+Hier wählen wir nun den untersten Database Driver aus 
+![image](./img/022_image.png)<br><br> 
+8. Nun auf Ok klicken und im nächsten Fenster geben wir nun folgende Sachen ein.
+> Database: "Name der Datenbank" <br>
+> URL:  dbc:mysql://127.0.0.1:3306/Name-der-Datenbank <br>
+> User name: root <br>
+> Password: ******* <br>
+
+Dann die Checkbox Save Passwort auswählen und danach auf Test Connection.
+![image](./img/023_image.png)<br><br> 
+9. Bei erfolgreichem Test kommt dieser Dialog
+![image](./img/024_image.png)<br><br> 
+10. Nun auf Finish klicken und die Datenbank wird nun im Data Source Explorer angezeigt.
+![image](./img/025_image.png)<br><br> 
